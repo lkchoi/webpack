@@ -1,34 +1,54 @@
+{{#pug}}
+<template lang="pug">
+  #app
+    img(src="./assets/logo.png")
+    {{#router}}
+    router-view
+    {{else}}
+    home
+    {{/router}}
+</template>
+{{else}}
 <template>
   <div id="app">
     <img src="./assets/logo.png">
     {{#router}}
     <router-view/>
     {{else}}
-    <HelloWorld/>
+    <Home/>
     {{/router}}
   </div>
 </template>
+{{/pug}}
 
 <script>
 {{#unless router}}
-import HelloWorld from './components/HelloWorld'
+import Home from './pages/home'
 
 {{/unless}}
 export default {
   name: 'App'{{#router}}{{else}},
   components: {
-    HelloWorld
+    Home
   }{{/router}}
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+{{#sass}}
+<style lang="sass">
+  #app
+    font-family: 'Avenir', Helvetica, Arial, sans-serif
+    text-align: center
+    color: #2c3e50
+    margin-top: 60px
 </style>
+{{else}}
+<style>
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
+</style>
+{{/sass}}

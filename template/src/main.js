@@ -7,8 +7,17 @@ import App from './App'
 {{#router}}
 import router from './router'
 {{/router}}
+{{#feathersClient}}
+import api from './api/client'
+{{/feathersClient}}
+{{#vuex}}
+import store from './store'
+{{/vuex}}
 
 Vue.config.productionTip = false
+{{#feathersClient}}
+Vue.prototype.$api = api
+{{/feathersClient}}
 
 /* eslint-disable no-new */
 new Vue({
@@ -16,6 +25,9 @@ new Vue({
   {{#router}}
   router,
   {{/router}}
+  {{#vuex}}
+  store,
+  {{/vuex}}
   {{#if_eq build "runtime"}}
   render: h => h(App)
   {{/if_eq}}
